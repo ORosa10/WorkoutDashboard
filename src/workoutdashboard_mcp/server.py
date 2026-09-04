@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -128,9 +127,8 @@ def get_training_summary(days: int = 28) -> dict[str, Any]:
         return _error(exc)
 
 
-def app():
-    """Return the MCP ASGI application for Streamable HTTP transport."""
-    return mcp.streamable_http_app()
+# ASGI application used by uvicorn and hosted deployments.
+app = mcp.streamable_http_app()
 
 
 if __name__ == "__main__":
